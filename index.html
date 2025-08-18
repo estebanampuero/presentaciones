@@ -310,77 +310,77 @@
                 <p>No se trata de elegir uno, sino de usar la herramienta correcta para cada tarea. El <strong>Agente Asistencial</strong> para la operación diaria y el <strong>Agente RAG / Grafana</strong> para la planificación estratégica.</p>
             </div>
         </section>
- <!-- Video Demo Section - Agregar después de "Enlaces a Sistemas Section" -->
-<section class="mb-16">
-    <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">Demostración del Sistema en Acción</h2>
-    <p class="text-slate-600 mb-8 pl-5">Visualiza cómo el agente asistencial interactúa con Slack y Google Calendar para gestionar las reservas de boxes en tiempo real.</p>
-    
-    <div class="max-w-5xl mx-auto">
-  <div class="bg-white p-6 rounded-xl shadow-lg">
-    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-slate-900">
-      <iframe class="w-full h-full" 
-              src="https://www.youtube.com/embed/DyKbyxf3XX8" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</div>
+
+        <!-- Video Demo Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">Demostración del Sistema en Acción</h2>
+            <p class="text-slate-600 mb-8 pl-5">Visualiza cómo el agente asistencial interactúa con Slack y Google Calendar para gestionar las reservas de boxes en tiempo real.</p>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                    <!-- INICIO: CÓDIGO CORREGIDO -->
+                    <div class="relative h-0 overflow-hidden rounded-lg" style="padding-bottom: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full" 
+                                src="https://www.youtube.com/embed/DyKbyxf3XX8" 
+                                title="Demostración del Agente de Agendamiento CAE"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <!-- FIN: CÓDIGO CORREGIDO -->
+                </div>
+            </div>
             
             <!-- Descripción del video -->
-            <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200 max-w-5xl mx-auto">
                 <h4 class="text-lg font-semibold text-slate-800 mb-2 flex items-center">
                     <svg class="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                     </svg>
                     Flujo de Trabajo Demostrado
                 </h4>
-                <ul class="space-y-2 text-sm text-slate-700">
+                <ul class="space-y-2 text-sm text-slate-700 list-inside">
                     <li class="flex items-start">
-                        <span class="text-blue-500 mr-2 mt-0.5">1.</span>
-                        <span><strong>Consulta en Slack:</strong> El personal médico solicita disponibilidad de boxes mediante mensaje directo.</span>
+                        <span class="text-blue-500 font-bold mr-2">1.</span>
+                        <span><strong>Consulta en Slack:</strong> El personal médico solicita disponibilidad de boxes mediante un mensaje.</span>
                     </li>
                     <li class="flex items-start">
-                        <span class="text-blue-500 mr-2 mt-0.5">2.</span>
+                        <span class="text-blue-500 font-bold mr-2">2.</span>
                         <span><strong>Procesamiento del Agente:</strong> El sistema interpreta la solicitud en lenguaje natural.</span>
                     </li>
                     <li class="flex items-start">
-                        <span class="text-blue-500 mr-2 mt-0.5">3.</span>
-                        <span><strong>Consulta a Google Calendar:</strong> Verifica disponibilidad en tiempo real.</span>
+                        <span class="text-blue-500 font-bold mr-2">3.</span>
+                        <span><strong>Consulta a Google Calendar:</strong> Verifica la disponibilidad en los calendarios correspondientes en tiempo real.</span>
                     </li>
                     <li class="flex items-start">
-                        <span class="text-blue-500 mr-2 mt-0.5">4.</span>
-                        <span><strong>Respuesta Inmediata:</strong> Confirma la reserva y actualiza el calendario automáticamente.</span>
+                        <span class="text-blue-500 font-bold mr-2">4.</span>
+                        <span><strong>Respuesta y Agendamiento:</strong> El agente responde con los horarios disponibles y agenda la cita, actualizando el calendario automáticamente.</span>
                     </li>
                 </ul>
             </div>
             
             <!-- Beneficios destacados -->
-            <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
                 <div class="text-center p-4 bg-teal-50 rounded-lg">
-                    <div class="text-2xl font-bold text-teal-700">Mejora en tiempos de gestión</div>
-                    <div class="text-sm text-slate-600"></div>
+                    <div class="text-xl font-bold text-teal-700">Mejora en tiempos de gestión</div>
                 </div>
                 <div class="text-center p-4 bg-teal-50 rounded-lg">
-                    <div class="text-2xl font-bold text-teal-700">Disponibilidad del sistema 24/7</div>
-                    <div class="text-sm text-slate-600"></div>
+                    <div class="text-xl font-bold text-teal-700">Disponibilidad del sistema 24/7</div>
                 </div>
                 <div class="text-center p-4 bg-teal-50 rounded-lg">
-                    <div class="text-2xl font-bold text-teal-700">Escalable</div>
-                    <div class="text-sm text-slate-600"></div>
+                    <div class="text-xl font-bold text-teal-700">Fácilmente Escalable</div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+
         <!-- Sugerencias de Mejora Section -->
         <section class="mb-16">
             <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">4. Próximos pasos</h2>
             <p class="text-slate-600 mb-8 pl-5">Propuestas para maximizar el potencial del sistema integrado.</p>
             <div class="space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
                         <span>1</span>
                     </div>
                     <div>
@@ -389,7 +389,7 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
                         <span>2</span>
                     </div>
                     <div>
@@ -398,7 +398,7 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
                         <span>3</span>
                     </div>
                     <div>
@@ -407,7 +407,7 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
                         <span>4</span>
                     </div>
                     <div>
