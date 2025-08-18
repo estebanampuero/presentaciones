@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subida de Informes - IPAustral</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+      background: url('https://cdn.shopify.com/s/files/1/0663/9940/4205/files/Captura_de_pantalla_2025-07-18_a_la_s_6.24.21_p.m..png?v=1752877491') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .upload-container {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+      width: 90%;
+      margin: 15vh auto;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.4rem;
+      margin: 0 0 10px;
+      color: #002b5b;
+    }
+
+    p {
+      text-align: center;
+      color: #4a5568;
+      font-size: 0.95rem;
+      margin: 0 0 20px;
+    }
+
+    .drop-zone {
+      border: 2px dashed #0056a3;
+      border-radius: 6px;
+      padding: 32px;
+      text-align: center;
+      color: #0056a3;
+      cursor: pointer;
+      transition: 0.3s background-color;
+    }
+
+    .drop-zone.dragover {
+      background-color: #e7f2fb;
+    }
+
+    .file-list {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #2d3748;
+      word-break: break-word;
+    }
+
+    .btn {
+      margin-top: 24px;
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #0056a3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #003d80;
+    }
+
+    .status {
+      margin-top: 16px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .status.success { color: green; }
+    .status.error {
+      color: red;
+      background: #fff5f5;
+      padding: 8px;
+      border: 1px solid #e53e3e;
+      border-radius: 4px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #cce4ff;
+      border-radius: 4px;
+      margin-top: 12px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      width: 0%;
+      background: #0056a3;
+      transition: width 0.3s;
+    }
+
+    @media (max-width: 500px) {
+      .upload-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .drop-zone {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h1>Instituto de Patología Austral</h1>
+    <p>Sube tus informes en PDF (máx 10MB por archivo).</p>
+
+    <div class="drop-zone" id="dropZone">
+      Haz clic o suelta archivos aquí
+      <input type="file" id="fileInput" multiple accept=".pdf" style="display:none"/>
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-bar-inner" id="progressBarInner"></div>
+    </div>
+    <button class="btn" id="uploadBtn">Subir Archivos</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    const webhookURL = "https://n8n-render-9dxx.onrender.com/webhook-test/78f6f53e-d8c7-4b91-bed5-298015b3372e";
+    const MAX_FILE_SIZE_MB = 10;
+
+    const dropZone = document.getElementById("dropZone");
+    const fileInput = document.getElementById("fileInput");
+    const fileList = document.getElementById("fileList");
+    const statusDiv = document.getElementById("status");
+    const uploadBtn = document.getElementById("uploadBtn");
+    const progressBar = document.getElementById("progressBar");
+    const progressBarInner = document.getElementById("progressBarInner");
+
+    let selectedFiles = [];
+
+    dropZone.addEventListener("click", () => fileInput.click());
+    dropZone.addEventListener("dragover", e => {
+      e.preventDefault();
+      dropZone.classList.add("dragover");
+    });
+    dropZone.addEventListener("dragleave", () => dropZone.classList.remove("dragover"));
+    dropZone.addEventListener("drop", e => {
+      e.preventDefault();
+      dropZone.classList.remove("dragover");
+      handleFiles(e.dataTransfer.files);
+    });
+    fileInput.addEventListener("change", () => {
+      handleFiles(fileInput.files);
+      fileInput.value = "";
+    });
+
+    function handleFiles(files) {
+      const validFiles = Array.from(files).filter(f => {
+        if (f.type !== "application/pdf") return false;
+        if (f.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+          alert(`⚠️ El archivo "${f.name}" excede los ${MAX_FILE_SIZE_MB} MB y no será agregado.`);
+          return false;
+        }
+        return true;
+      });
+
+      const existingNames = new Set(selectedFiles.map(f => f.name));
+      const uniqueNewFiles = validFiles.filter(f => !existingNames.has(f.name));
+      selectedFiles = selectedFiles.concat(uniqueNewFiles);
+      renderFileList();
+      statusDiv.textContent = "";
+      statusDiv.className = "status";
+    }
+
+    function renderFileList() {
+      if (selectedFiles.length === 0) {
+        fileList.innerHTML = "No hay archivos seleccionados.";
+        return;
+      }
+      fileList.innerHTML = selectedFiles.map(f =>
+        `📄 ${f.name} (${(f.size / 1024 / 1024).toFixed(1)} MB)`
+      ).join("<br>");
+    }
+
+    uploadBtn.addEventListener("click", () => {
+      if (selectedFiles.length === 0) {
+        statusDiv.textContent = "❌ No hay archivos PDF seleccionados.";
+        statusDiv.className = "status error";
+        return;
+      }
+
+      const formData = new FormData();
+      selectedFiles.forEach((file, index) => {
+        formData.append(`file${index + 1}`, file);
+      });
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", webhookURL);
+
+      uploadBtn.disabled = true;
+      progressBar.style.display = "block";
+      progressBarInner.style.width = "0%";
+      statusDiv.textContent = "⏳ Subiendo archivos...";
+      statusDiv.className = "status";
+
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) {
+          const percent = (e.loaded / e.total) * 100;
+          progressBarInner.style.width = percent + "%";
+        }
+      };
+
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          const confirmClear = confirm("✅ Archivos subidos correctamente.\n¿Deseas limpiar la lista?");
+          if (confirmClear) {
+            selectedFiles = [];
+            fileList.innerHTML = "";
+            fileInput.value = "";
+          }
+          statusDiv.textContent = "✅ Carga finalizada.";
+          statusDiv.className = "status success";
+        } else {
+          statusDiv.textContent = `❌ Error HTTP ${xhr.status}`;
+          statusDiv.className = "status error";
+        }
+        uploadBtn.disabled = false;
+        progressBar.style.display = "none";
+      };
+
+      xhr.onerror = () => {
+        statusDiv.textContent = "❌ Error de red o del servidor.";
+        statusDiv.className = "status error";
+        uploadBtn.disabled = false;
+        progressBar.style.display = "none";
+      };
+
+      xhr.send(formData);
+    });
+  </script>
+</body>
+</html>
