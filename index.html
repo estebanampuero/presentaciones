@@ -20,6 +20,14 @@
             background-color: #CCFBF1; /* teal-100 */
             color: #115E59; /* teal-800 */
         }
+        .fhir-badge {
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-700">
@@ -331,62 +339,324 @@
         </section>
 
         <!-- Video Demo Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">Demostración del Sistema en Acción</h2>
-            <p class="text-slate-600 mb-8 pl-5">Visualiza cómo el agente asistencial interactúa con Slack y Google Calendar para gestionar las reservas de boxes en tiempo real.</p>
-            
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-                    <div class="relative h-0 overflow-hidden rounded-lg" style="padding-bottom: 56.25%;">
-                        <iframe class="absolute top-0 left-0 w-full h-full" 
-                                src="https://www.youtube.com/embed/DyKbyxf3XX8" 
-                                title="Demostración del Agente de Agendamiento CAE"
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                        </iframe>
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                <div class="relative h-0 overflow-hidden rounded-lg" style="padding-bottom: 56.25%;">
+                    <iframe class="absolute top-0 left-0 w-full h-full" 
+                            src="https://www.youtube.com/embed/DyKbyxf3XX8" 
+                            title="Demostración del Agente de Agendamiento CAE"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+                    
+                    <!-- Descripción del video -->
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <h4 class="text-lg font-semibold text-slate-800 mb-2 flex items-center">
+                            <svg class="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                            </svg>
+                            Flujo de Trabajo Demostrado
+                        </h4>
+                        <ul class="space-y-2 text-sm text-slate-700">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-0.5">1.</span>
+                                <span><strong>Consulta en Slack:</strong> El personal médico solicita disponibilidad de boxes mediante mensaje directo.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-0.5">2.</span>
+                                <span><strong>Procesamiento del Agente:</strong> El sistema interpreta la solicitud en lenguaje natural.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-0.5">3.</span>
+                                <span><strong>Consulta a Google Calendar:</strong> Verifica disponibilidad en tiempo real.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-0.5">4.</span>
+                                <span><strong>Respuesta Inmediata:</strong> Confirma la reserva y actualiza el calendario automáticamente.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Beneficios destacados -->
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-teal-50 rounded-lg">
+                            <div class="text-2xl font-bold text-teal-700">Mejora en tiempos de gestión</div>
+                            <div class="text-sm text-slate-600"></div>
+                        </div>
+                        <div class="text-center p-4 bg-teal-50 rounded-lg">
+                            <div class="text-2xl font-bold text-teal-700">Disponibilidad del sistema 24/7</div>
+                            <div class="text-sm text-slate-600"></div>
+                        </div>
+                        <div class="text-center p-4 bg-teal-50 rounded-lg">
+                            <div class="text-2xl font-bold text-teal-700">Escalable</div>
+                            <div class="text-sm text-slate-600"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Nueva Sección: Automatizaciones FHIR -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">Oportunidades de Expansión con FHIR</h2>
+            <p class="text-slate-600 mb-8 pl-5">La implementación del estándar FHIR abriría nuevas posibilidades de automatización clínica, cumpliendo con estándares internacionales de interoperabilidad.</p>
             
-            <!-- Descripción del video -->
-            <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200 max-w-5xl mx-auto">
-                <h4 class="text-lg font-semibold text-slate-800 mb-2 flex items-center">
-                    <svg class="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                    </svg>
-                    Flujo de Trabajo Demostrado
-                </h4>
-                <ul class="space-y-2 text-sm text-slate-700 list-inside">
-                    <li class="flex items-start">
-                        <span class="text-blue-500 font-bold mr-2">1.</span>
-                        <span><strong>Consulta en Slack:</strong> El personal médico solicita disponibilidad de boxes mediante un mensaje.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 font-bold mr-2">2.</span>
-                        <span><strong>Procesamiento del Agente:</strong> El sistema interpreta la solicitud en lenguaje natural.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 font-bold mr-2">3.</span>
-                        <span><strong>Consulta a Google Calendar:</strong> Verifica la disponibilidad en los calendarios correspondientes en tiempo real.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 font-bold mr-2">4.</span>
-                        <span><strong>Respuesta y Agendamiento:</strong> El agente responde con los horarios disponibles y agenda la cita, actualizando el calendario automáticamente.</span>
-                    </li>
-                </ul>
+            <!-- Intro FHIR -->
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl shadow-lg border border-indigo-100 mb-8">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-indigo-100 rounded-lg mr-4">
+                        <svg class="h-8 w-8 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">¿Qué es FHIR?</h3>
+                        <span class="fhir-badge">Fast Healthcare Interoperability Resources</span>
+                    </div>
+                </div>
+                <p class="text-slate-700 mb-4">FHIR es un estándar moderno para el intercambio de información sanitaria que facilita el intercambio de datos en tiempo real y la automatización entre sistemas de salud, utilizando la misma arquitectura RESTful que ha permitido a entidades como Google, Amazon y Facebook intercambiar datos a través de Internet .</p>
+                <div class="bg-white p-4 rounded-lg shadow-inner">
+                    <p class="text-sm text-slate-600"><strong>Impacto actual:</strong> En 2025, todas las APIs FHIR certificadas deben cumplir con USCDIv3 y SMART 2.0 , lo que significa que los hospitales que implementen FHIR ahora estarán preparados para el futuro de la interoperabilidad sanitaria.</p>
+                </div>
             </div>
-            
-            <!-- Beneficios destacados -->
-            <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-                <div class="text-center p-4 bg-teal-50 rounded-lg">
-                    <div class="text-xl font-bold text-teal-700">Mejora en tiempos de gestión</div>
+
+            <!-- Automatizaciones FHIR -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Alerta valores críticos -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border-l-4 border-red-400">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-red-100 rounded-lg">
+                            <svg class="h-6 w-6 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9-.75a9 9 0 1 1 18 0 9 9 0 0 1-18 0ZM12 15.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-800">Alertas Críticas de Laboratorio</h4>
+                            <span class="fhir-badge text-xs">Observation Resource</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">Sistema automático de alertas cuando valores de laboratorio superan umbrales críticos.</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start">
+                            <span class="text-red-500 mr-2 mt-0.5">⚡</span>
+                            <span><strong>Entrada:</strong> Recurso Observation (glucosa, potasio, hemoglobina)</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-red-500 mr-2 mt-0.5">📧</span>
+                            <span><strong>Acción:</strong> Email automático a médico tratante</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-red-500 mr-2 mt-0.5">📱</span>
+                            <span><strong>Notificación:</strong> Telegram/Slack en tiempo real</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center p-4 bg-teal-50 rounded-lg">
-                    <div class="text-xl font-bold text-teal-700">Disponibilidad del sistema 24/7</div>
+
+                <!-- PDF clínico -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border-l-4 border-blue-400">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-blue-100 rounded-lg">
+                            <svg class="h-6 w-6 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-800">Generador PDF Clínico</h4>
+                            <span class="fhir-badge text-xs">Patient + Observation</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">Creación automática de informes clínicos personalizados en formato PDF.</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start">
+                            <span class="text-blue-500 mr-2 mt-0.5">📊</span>
+                            <span><strong>Entrada:</strong> Datos del paciente + observaciones</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-blue-500 mr-2 mt-0.5">📄</span>
+                            <span><strong>Genera:</strong> Informe PDF estructurado</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-blue-500 mr-2 mt-0.5">☁️</span>
+                            <span><strong>Almacena:</strong> Google Drive o envío automático</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center p-4 bg-teal-50 rounded-lg">
-                    <div class="text-xl font-bold text-teal-700">Fácilmente Escalable</div>
+
+                <!-- Recordatorios -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border-l-4 border-green-400">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-green-100 rounded-lg">
+                            <svg class="h-6 w-6 text-green-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-800">Recordatorios Inteligentes</h4>
+                            <span class="fhir-badge text-xs">MedicationRequest</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">Sistema de recordatorios proactivos para medicación y controles médicos.</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start">
+                            <span class="text-green-500 mr-2 mt-0.5">💊</span>
+                            <span><strong>Entrada:</strong> MedicationRequest/Appointment</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-green-500 mr-2 mt-0.5">📲</span>
+                            <span><strong>WhatsApp:</strong> Recordatorios personalizados</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-green-500 mr-2 mt-0.5">⏰</span>
+                            <span><strong>Timing:</strong> X días antes del control</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reportes semanales -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border-l-4 border-purple-400">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-purple-100 rounded-lg">
+                            <svg class="h-6 w-6 text-purple-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-800">Reportes Resumen</h4>
+                            <span class="fhir-badge text-xs">Observation Grouped</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">Generación automática de reportes consolidados por paciente y período.</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start">
+                            <span class="text-purple-500 mr-2 mt-0.5">📈</span>
+                            <span><strong>Entrada:</strong> Observaciones agrupadas por paciente</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-purple-500 mr-2 mt-0.5">📋</span>
+                            <span><strong>Genera:</strong> Resumen CSV/Google Sheet</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-purple-500 mr-2 mt-0.5">🔄</span>
+                            <span><strong>Frecuencia:</strong> Semanal automatizado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detección urgencias -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border-l-4 border-orange-400">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-orange-100 rounded-lg">
+                            <svg class="h-6 w-6 text-orange-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-800">Detección de Urgencias</h4>
+                            <span class="fhir-badge text-xs">DocumentReference</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">Análisis inteligente de texto libre para identificar casos urgentes automáticamente.</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start">
+                            <span class="text-orange-500 mr-2 mt-0.5">🔍</span>
+                            <span><strong>Entrada:</strong> Informes clínicos no estructurados</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-orange-500 mr-2 mt-0.5">🤖</span>
+                            <span><strong>Procesa:</strong> OCR + IA + Expresiones regulares</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-orange-500 mr-2 mt-0.5">🚨</span>
+                            <span><strong>Clasifica:</strong> "Urgente" vs "Normal"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card adicional para mostrar el potencial -->
+                <div class="bg-gradient-to-br from-teal-50 to-blue-50 p-6 rounded-xl shadow-md border border-teal-200">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-teal-100 rounded-lg">
+                            <svg class="h-6 w-6 text-teal-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m4.5 0a12.066 12.066 0 0 0-3.75-.569m-4.5-.569a12.06 12.06 0 0 0-3.75.569m7.5 8.944l-.896-.664a11.998 11.998 0 0 1-5.208 0l-.896.664m8.364-9.778l-1.04.688a11.98 11.98 0 0 1-6.648 0l-1.04-.688M12 6.75h.008v.008H12V6.75Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-800">Potencial Ilimitado</h4>
+                            <span class="fhir-badge text-xs">Ecosistema Integrado</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">Con FHIR como base, el hospital puede desarrollar múltiples automatizaciones interconectadas.</p>
+                    <div class="bg-white p-3 rounded-lg shadow-inner">
+                        <p class="text-xs text-slate-600 font-medium">
+                            La integración de FHIR con IA mejora la automatización sanitaria al permitir el intercambio fluido de datos, la toma de decisiones en tiempo real y análisis predictivos perspicaces .
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beneficios FHIR -->
+            <div class="mt-8 bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">Ventajas Clave de la Implementación FHIR</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="h-8 w-8 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold text-slate-800 mb-2">Interoperabilidad Universal</h4>
+                        <p class="text-sm text-slate-600">FHIR permite que diferentes sistemas de salud se comuniquen usando un lenguaje común, eliminando barreras entre plataformas </p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="h-8 w-8 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold text-slate-800 mb-2">Cumplimiento Regulatorio</h4>
+                        <p class="text-sm text-slate-600">FHIR ayuda a garantizar el cumplimiento de regulaciones importantes como ONC y HIPAA , preparando al hospital para auditorías futuras</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="h-8 w-8 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold text-slate-800 mb-2">Escalabilidad</h4>
+                        <p class="text-sm text-slate-600">Su diseño modular se adapta tanto a clínicas pequeñas como a grandes redes hospitalarias , creciendo con las necesidades del hospital</p>
+                    </div>
+                </div>
+
+                <!-- ROI Projection -->
+                <div class="mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                    <h4 class="text-lg font-semibold text-slate-800 mb-4 flex items-center">
+                        <svg class="h-6 w-6 text-green-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.94" />
+                        </svg>
+                        Impacto Económico Proyectado
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-2xl font-bold text-green-700">35%</div>
+                            <div class="text-sm text-slate-600">Reducción de costos</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-2xl font-bold text-green-700">18 meses</div>
+                            <div class="text-sm text-slate-600">Tiempo de ROI</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-2xl font-bold text-green-700">451%</div>
+                            <div class="text-sm text-slate-600">Retorno de inversión</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 text-center">
+                        Datos basados en análisis de más de 150 implementaciones empresariales en sistemas de salud importantes 
+                    </p>
                 </div>
             </div>
         </section>
@@ -397,7 +667,7 @@
             <p class="text-slate-600 mb-8 pl-5">Propuestas para maximizar el potencial del sistema integrado.</p>
             <div class="space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
                         <span>1</span>
                     </div>
                     <div>
@@ -406,7 +676,7 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
                         <span>2</span>
                     </div>
                     <div>
@@ -415,7 +685,7 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
                         <span>3</span>
                     </div>
                     <div>
@@ -424,12 +694,21 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold text-xl">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full text-indigo-600 font-bold">
                         <span>4</span>
                     </div>
                     <div>
                         <h4 class="text-lg font-semibold text-slate-800">Optimizar la estructura de la base de datos de Supabase</h4>
                         <p class="text-slate-600">Mejorar la automatización que almacena las bases de datos desde Google Calendar a Supabase.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-bold">
+                        <span>5</span>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-slate-800">Implementación de Estándar FHIR</h4>
+                        <p class="text-slate-600">Evaluar la migración hacia el estándar FHIR para desbloquear las automatizaciones clínicas avanzadas descritas anteriormente y garantizar interoperabilidad futura con otros sistemas hospitalarios.</p>
                     </div>
                 </div>
             </div>
@@ -439,7 +718,6 @@
         <section class="mb-16">
             <div class="max-w-3xl mx-auto">
                 <div class="bg-gradient-to-r from-teal-50 to-blue-50 p-8 rounded-xl shadow-lg border border-teal-100">
-                    <!-- INICIO: CÓDIGO MODIFICADO CON QR -->
                     <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 md:space-x-6">
                         
                         <!-- Profile Image -->
@@ -477,7 +755,6 @@
                         </div>
 
                     </div>
-                    <!-- FIN: CÓDIGO MODIFICADO CON QR -->
                     
                     <!-- Contact Info -->
                     <div class="mt-6 pt-6 border-t border-teal-200">
