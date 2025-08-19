@@ -225,7 +225,7 @@
                         <p class="text-sm text-slate-600">Revisa el workflow del agente de inteligencia artificial para consultas analíticas.</p>
                     </a>
                     
-                    <!-- INICIO: Nueva Tarjeta Añadida -->
+                    <!-- Optimizador -->
                     <a href="https://estebanampuero.github.io/cae/" 
                        target="_blank" 
                        rel="noopener noreferrer"
@@ -244,7 +244,26 @@
                         <h3 class="text-lg font-semibold text-slate-800 mb-2">Optimizador de Agendamiento CAE</h3>
                         <p class="text-sm text-slate-600">Herramienta para visualizar y optimizar la asignación de horas y boxes disponibles.</p>
                     </a>
-                    <!-- FIN: Nueva Tarjeta Añadida -->
+                    
+                    <!-- Workflow Estadística -->
+                    <a href="https://n8n-render-9dxx.onrender.com/workflow/9d3kBOtjXIvmOUJH" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="group bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-teal-400">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="p-2 bg-teal-100 rounded-lg group-hover:bg-teal-200 transition-colors">
+                                <!-- Icono de Base de Datos -->
+                                <svg class="h-6 w-6 text-teal-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375" />
+                                </svg>
+                            </div>
+                            <svg class="h-5 w-5 text-gray-400 group-hover:text-teal-600 transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-2">Workflow de Estadística Automática</h3>
+                        <p class="text-sm text-slate-600">Proceso que extrae, procesa y carga los datos de agendamiento en la base de datos.</p>
+                    </a>
 
                 </div>
                 
@@ -318,7 +337,6 @@
             
             <div class="max-w-5xl mx-auto">
                 <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-                    <!-- INICIO: CÓDIGO CORREGIDO -->
                     <div class="relative h-0 overflow-hidden rounded-lg" style="padding-bottom: 56.25%;">
                         <iframe class="absolute top-0 left-0 w-full h-full" 
                                 src="https://www.youtube.com/embed/DyKbyxf3XX8" 
@@ -328,7 +346,6 @@
                                 allowfullscreen>
                         </iframe>
                     </div>
-                    <!-- FIN: CÓDIGO CORREGIDO -->
                 </div>
             </div>
             
@@ -420,9 +437,11 @@
  
         <!-- LinkedIn Profile Card -->
         <section class="mb-16">
-            <div class="max-w-2xl mx-auto">
+            <div class="max-w-3xl mx-auto">
                 <div class="bg-gradient-to-r from-teal-50 to-blue-50 p-8 rounded-xl shadow-lg border border-teal-100">
-                    <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <!-- INICIO: CÓDIGO MODIFICADO CON QR -->
+                    <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 md:space-x-6">
+                        
                         <!-- Profile Image -->
                         <div class="flex-shrink-0">
                             <div class="w-24 h-24 rounded-full overflow-hidden shadow-lg ring-4 ring-white">
@@ -449,7 +468,16 @@
                                 Conectar en LinkedIn
                             </a>
                         </div>
+                        
+                        <!-- QR Code -->
+                        <div class="flex-shrink-0 hidden md:block">
+                            <div class="w-24 h-24 p-1 bg-white rounded-lg shadow-md ring-2 ring-white">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmiguel-moreira-ampuero%2F&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="QR code for LinkedIn profile" class="w-full h-full object-contain" />
+                            </div>
+                        </div>
+
                     </div>
+                    <!-- FIN: CÓDIGO MODIFICADO CON QR -->
                     
                     <!-- Contact Info -->
                     <div class="mt-6 pt-6 border-t border-teal-200">
