@@ -211,6 +211,8 @@
                         <p class="text-slate-700 mt-2 font-medium text-lg">Ahorro potencial anual (USD)</p>
                     </div>
                 </div>
+                <!-- FUENTE AÑADIDA AQUÍ -->
+                <p class="text-sm text-slate-400 mt-8 italic animated-item" style="--delay: 1000ms;">Fuente: Datos de resultados del proyecto Sistema Nacional de Receta Electrónica (SNRE), MINSAL.</p>
             </div>
         </section>
 
@@ -250,7 +252,6 @@
             function showSlide(index) {
                 slides.forEach((slide, i) => {
                     slide.classList.toggle('active', i === index);
-                    // Reset animations for items in the new active slide
                     if (i === index) {
                         const animatedItems = slide.querySelectorAll('.animated-item');
                         animatedItems.forEach(item => {
@@ -282,7 +283,6 @@
                 else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') e.preventDefault(), prevSlide();
             });
 
-            // Copy button functionality
             const copyBtn = document.getElementById('copyBtn');
             const jsonCode = document.getElementById('jsonCode');
             copyBtn.addEventListener('click', () => {
@@ -292,7 +292,6 @@
                 });
             });
 
-            // Initial setup
             showSlide(0);
         });
     </script>
