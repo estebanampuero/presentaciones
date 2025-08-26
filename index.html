@@ -9,11 +9,8 @@
         @import url('https://rsms.me/inter/inter.css');
         html, body {
             font-family: 'Inter', sans-serif;
-            margin: 0; padding: 0;
+            margin: 0; padding: 0; overflow: hidden;
             height: 100%; width: 100%;
-            /* permitir scroll en móviles */
-            overflow-x: hidden;
-            overflow-y: auto;
         }
 
         @keyframes fadeIn {
@@ -22,57 +19,38 @@
         }
 
         #presentation-container {
-            position: relative;
-            width: 100%;
-            min-height: 100vh; /* flexible */
+            position: relative; width: 100vw; height: 100vh;
         }
         
         .slide {
-            position: relative;
-            width: 100%;
-            min-height: 100vh; /* flexible */
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            flex-direction: column;
-            opacity: 0; 
-            visibility: hidden;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
             transition: opacity 0.6s ease-in-out, visibility 0s linear 0.6s;
-            padding-bottom: 4rem; /* espacio para botones */
         }
 
         .slide.active {
-            opacity: 1; 
-            visibility: visible;
+            opacity: 1; visibility: visible;
             transition: opacity 0.6s ease-in-out;
         }
 
         .slide-content {
-            max-width: 1100px; 
-            width: 100%;
-            padding: 1.5rem; /* padding base móviles */
+            max-width: 1100px; width: 100%;
+            padding: 2rem 3rem; /* Padding base para móviles */
         }
 
-        /* Ajustes de padding y texto para pantallas grandes */
+        /* Ajustes de padding para pantallas más grandes */
         @media (min-width: 768px) {
             .slide-content {
                 padding: 3rem 4rem;
             }
         }
-
+        
         .animated-item {
             animation: fadeIn 0.7s ease-out forwards;
             opacity: 0;
             animation-delay: var(--delay, 0s);
-        }
-
-        /* Reposicionar botones en pantallas pequeñas */
-        @media (max-width: 640px) {
-            .nav-buttons {
-                right: 50%;
-                transform: translateX(50%);
-                bottom: 1rem;
-            }
         }
     </style>
 </head>
@@ -82,88 +60,88 @@
 
     <main id="presentation-container">
 
-        <!-- ===== Diapositiva 1: Título ===== -->
+        <!-- Diapositiva 1: Título -->
         <section class="slide bg-white">
             <div class="slide-content text-center">
                 <div class="animated-item">
-                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-blue-900 mb-4">HL7 FHIR R4</h1>
-                    <p class="text-xl sm:text-2xl md:text-3xl text-slate-700">Construyendo el Futuro de la Salud Digital con IA</p>
-                    <p class="text-base sm:text-lg text-slate-500 mt-6">Hospital Puerto Montt</p>
+                    <h1 class="text-5xl md:text-7xl font-bold text-blue-900 mb-4">HL7 FHIR R4</h1>
+                    <p class="text-2xl md:text-3xl text-slate-700">Construyendo el Futuro de la Salud Digital con IA</p>
+                    <p class="text-lg text-slate-500 mt-6">Grupo de Innovación - Hospital Puerto Montt</p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Diapositiva 2: ¿Qué es HL7 y FHIR? ===== -->
+        <!-- Diapositiva 2: ¿Qué es HL7 y FHIR? -->
         <section class="slide bg-slate-50">
             <div class="slide-content">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-6 md:mb-10 text-center animated-item">El Lenguaje Universal de la Salud Digital</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-8 md:mb-10 text-center animated-item">El Lenguaje Universal de la Salud Digital</h2>
                 <div class="grid md:grid-cols-2 gap-6 md:gap-8 text-base md:text-lg">
-                    <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-l-4 border-blue-500 animated-item" style="--delay: 200ms;">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-blue-900 mb-2">HL7: El Arquitecto</h3>
+                    <div class="bg-white p-5 md:p-6 rounded-lg shadow-lg border-l-4 border-blue-500 animated-item" style="--delay: 200ms;">
+                        <h3 class="text-xl md:text-2xl font-semibold text-blue-900 mb-2 md:mb-3">HL7: El Arquitecto</h3>
                         <p>Una organización que crea los <span class="font-semibold">planos (estándares)</span> para que la información clínica y administrativa pueda ser intercambiada de forma segura y coherente.</p>
                     </div>
-                    <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg border-l-4 border-green-500 animated-item" style="--delay: 400ms;">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-green-700 mb-2">FHIR: La Herramienta Moderna</h3>
+                    <div class="bg-white p-5 md:p-6 rounded-lg shadow-lg border-l-4 border-green-500 animated-item" style="--delay: 400ms;">
+                        <h3 class="text-xl md:text-2xl font-semibold text-green-700 mb-2 md:mb-3">FHIR: La Herramienta Moderna</h3>
                         <p>El estándar más avanzado de HL7, que usa <span class="font-semibold">tecnología web (APIs)</span> para construir puentes de datos entre sistemas de salud de manera rápida y eficiente.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Diapositiva 3: ¿Por qué FHIR R4 es Clave? ===== -->
+        <!-- Diapositiva 3: ¿Por qué FHIR R4 es Clave? -->
         <section class="slide bg-white">
             <div class="slide-content text-center">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-6 md:mb-10 animated-item">¿Por qué FHIR R4 es un Pilar Estratégico?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-8 md:mb-10 animated-item">¿Por qué FHIR R4 es un Pilar Estratégico?</h2>
                 <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-left">
-                    <div class="bg-slate-50 p-4 md:p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform animated-item" style="--delay: 200ms;">
-                        <h3 class="font-semibold text-base sm:text-lg md:text-xl text-blue-900 mb-2">Base Sólida para IA</h3>
+                    <div class="bg-slate-50 p-5 md:p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform animated-item" style="--delay: 200ms;">
+                        <h3 class="font-semibold text-lg md:text-xl text-blue-900 mb-2">Base Sólida para IA</h3>
                         <p class="text-sm md:text-base">Ofrece datos limpios, estructurados y consistentes, el combustible esencial para cualquier modelo de Inteligencia Artificial confiable.</p>
                     </div>
-                    <div class="bg-slate-50 p-4 md:p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform animated-item" style="--delay: 400ms;">
-                        <h3 class="font-semibold text-base sm:text-lg md:text-xl text-blue-900 mb-2">Interoperabilidad Real</h3>
+                    <div class="bg-slate-50 p-5 md:p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform animated-item" style="--delay: 400ms;">
+                        <h3 class="font-semibold text-lg md:text-xl text-blue-900 mb-2">Interoperabilidad Real</h3>
                         <p class="text-sm md:text-base">Rompe los silos de información, permitiendo que nuestro hospital se conecte con otros sistemas de forma estandarizada y segura.</p>
                     </div>
-                    <div class="bg-slate-50 p-4 md:p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform animated-item" style="--delay: 600ms;">
-                        <h3 class="font-semibold text-base sm:text-lg md:text-xl text-blue-900 mb-2">Innovación Acelerada</h3>
+                    <div class="bg-slate-50 p-5 md:p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform animated-item" style="--delay: 600ms;">
+                        <h3 class="font-semibold text-lg md:text-xl text-blue-900 mb-2">Innovación Acelerada</h3>
                         <p class="text-sm md:text-base">Facilita el desarrollo rápido de nuevas aplicaciones (apps para pacientes, tableros de control, etc.) al simplificar el acceso a los datos.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Diapositiva 4: Core-CL en Chile ===== -->
+        <!-- Diapositiva 4: Core-CL en Chile -->
         <section class="slide bg-slate-50">
             <div class="slide-content">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-6 md:mb-8 text-center animated-item">El Estándar para Chile: Guía Core-CL</h2>
-                <p class="text-center text-sm sm:text-base md:text-xl text-slate-600 mb-6 md:mb-10 animated-item" style="--delay: 200ms;">Core-CL adapta los recursos globales de FHIR a la realidad chilena, definiendo perfiles obligatorios para la interoperabilidad nacional.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-6 md:mb-8 text-center animated-item">El Estándar para Chile: Guía Core-CL</h2>
+                <p class="text-center text-base md:text-xl text-slate-600 mb-8 md:mb-10 animated-item" style="--delay: 200ms;">Core-CL adapta los recursos globales de FHIR a la realidad chilena, definiendo perfiles obligatorios para la interoperabilidad nacional.</p>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 text-center">
-                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 300ms;"><h3 class="text-base sm:text-lg md:text-xl font-semibold text-green-700">Paciente</h3><p class="text-slate-600 text-xs sm:text-sm md:text-base">Incluye RUN y segundo apellido.</p></div>
-                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 400ms;"><h3 class="text-base sm:text-lg md:text-xl font-semibold text-green-700">Observación</h3><p class="text-slate-600 text-xs sm:text-sm md:text-base">Signos vitales, laboratorios.</p></div>
-                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 500ms;"><h3 class="text-base sm:text-lg md:text-xl font-semibold text-green-700">Encuentro</h3><p class="text-slate-600 text-xs sm:text-sm md:text-base">Consultas, hospitalizaciones.</p></div>
-                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 600ms;"><h3 class="text-base sm:text-lg md:text-xl font-semibold text-green-700">Receta</h3><p class="text-slate-600 text-xs sm:text-sm md:text-base">Prescripciones médicas.</p></div>
-                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 700ms;"><h3 class="text-base sm:text-lg md:text-xl font-semibold text-green-700">Inmunización</h3><p class="text-slate-600 text-xs sm:text-sm md:text-base">Registro Nacional de Vacunas.</p></div>
-                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 800ms;"><h3 class="text-base sm:text-lg md:text-xl font-semibold text-green-700">Composición</h3><p class="text-slate-600 text-xs sm:text-sm md:text-base">Epicrisis, informes de alta.</p></div>
+                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 300ms;"><h3 class="text-lg md:text-xl font-semibold text-green-700">Paciente</h3><p class="text-slate-600 text-sm md:text-base">Incluye RUN y segundo apellido.</p></div>
+                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 400ms;"><h3 class="text-lg md:text-xl font-semibold text-green-700">Observación</h3><p class="text-slate-600 text-sm md:text-base">Signos vitales, laboratorios.</p></div>
+                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 500ms;"><h3 class="text-lg md:text-xl font-semibold text-green-700">Encuentro</h3><p class="text-slate-600 text-sm md:text-base">Consultas, hospitalizaciones.</p></div>
+                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 600ms;"><h3 class="text-lg md:text-xl font-semibold text-green-700">Receta</h3><p class="text-slate-600 text-sm md:text-base">Prescripciones médicas.</p></div>
+                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 700ms;"><h3 class="text-lg md:text-xl font-semibold text-green-700">Inmunización</h3><p class="text-slate-600 text-sm md:text-base">Registro Nacional de Vacunas.</p></div>
+                    <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg animated-item" style="--delay: 800ms;"><h3 class="text-lg md:text-xl font-semibold text-green-700">Composición</h3><p class="text-slate-600 text-sm md:text-base">Epicrisis, informes de alta.</p></div>
                 </div>
             </div>
         </section>
-
-        <!-- ===== Diapositiva 5: API en Acción ===== -->
+        
+        <!-- Diapositiva 5: API en Acción -->
         <section class="slide bg-white">
             <div class="slide-content">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-6 md:mb-8 text-center animated-item">FHIR en Acción: La API RESTful</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-6 md:mb-8 text-center animated-item">FHIR en Acción: La API RESTful</h2>
                 <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
                     <div class="animated-item" style="--delay: 200ms;">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-blue-900 mb-2 md:mb-4">Consulta de un Paciente</h3>
-                        <p class="text-sm sm:text-base md:text-lg text-slate-600 mb-2 md:mb-4">Así de simple es solicitar datos. Es una petición web estándar para obtener el recurso "Paciente" con un ID específico.</p>
-                        <div class="bg-slate-100 p-2 md:p-4 rounded-lg text-xs sm:text-sm md:text-lg font-mono text-slate-700 border border-slate-200 overflow-x-auto">
+                        <h3 class="text-xl md:text-2xl font-semibold text-blue-900 mb-3 md:mb-4">Consulta de un Paciente</h3>
+                        <p class="text-base md:text-lg text-slate-600 mb-3 md:mb-4">Así de simple es solicitar datos. Es una petición web estándar para obtener el recurso "Paciente" con un ID específico.</p>
+                        <div class="bg-slate-100 p-3 md:p-4 rounded-lg text-base md:text-lg font-mono text-slate-700 border border-slate-200 overflow-x-auto">
                             <span class="text-green-600 font-bold">GET</span> https://servidor.minsal.cl/fhir/Patient/12345
                         </div>
                     </div>
                     <div class="animated-item" style="--delay: 400ms;">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-blue-900 mb-2 md:mb-4">Respuesta: Datos Estructurados (JSON)</h3>
+                        <h3 class="text-xl md:text-2xl font-semibold text-blue-900 mb-3 md:mb-4">Respuesta: Datos Estructurados (JSON)</h3>
                         <div class="relative bg-slate-800 rounded-lg shadow-lg max-h-60 md:max-h-80 overflow-y-auto">
                             <button id="copyBtn" class="absolute top-2 right-2 bg-slate-600 text-white text-xs px-2 py-1 rounded hover:bg-slate-500">Copiar</button>
-                            <pre class="p-2 pt-8 md:p-4 md:pt-8"><code id="jsonCode" class="language-json text-xs sm:text-sm md:text-base text-white">{
+                            <pre class="p-3 pt-8 md:p-4 md:pt-8"><code id="jsonCode" class="language-json text-xs md:text-sm text-white">{
   "resourceType": "Patient",
   "id": "12345",
   "identifier": [{
@@ -188,73 +166,74 @@
             </div>
         </section>
 
-        <!-- ===== Diapositiva 6: Impacto en IA y Seguridad ===== -->
+        <!-- Diapositiva 6: Impacto en IA y Seguridad -->
         <section class="slide bg-slate-50">
             <div class="slide-content text-center">
-                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-6 md:mb-10 animated-item">De Datos Crudos a Decisiones Clínicas Inteligentes</h2>
+                 <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-8 md:mb-10 animated-item">De Datos Crudos a Decisiones Clínicas Inteligentes</h2>
                  <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
                      <div class="text-center animated-item" style="--delay: 200ms;">
-                        <div class="bg-white p-2 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-8 h-8 md:w-12 md:h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7l8 4.5 8-4.5M12 16V7.5"></path></svg></div>
-                        <h3 class="font-semibold mt-2 text-xs sm:text-sm md:text-base">1. Fuentes de Datos</h3>
+                        <div class="bg-white p-3 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-10 h-10 md:w-12 md:h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7l8 4.5 8-4.5M12 16V7.5"></path></svg></div>
+                        <h3 class="font-semibold mt-2 text-sm md:text-base">1. Fuentes de Datos</h3>
                         <p class="text-xs md:text-sm text-slate-600">Sistemas HIS, LIS, etc.</p>
                      </div>
-                     <div class="text-lg md:text-2xl text-slate-300 animated-item" style="--delay: 350ms;">→</div>
+                     <div class="text-xl md:text-2xl text-slate-300 animated-item" style="--delay: 350ms;">→</div>
                      <div class="text-center animated-item" style="--delay: 500ms;">
-                        <div class="bg-white p-2 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-8 h-8 md:w-12 md:h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>
-                        <h3 class="font-semibold mt-2 text-xs sm:text-sm md:text-base">2. Estándar FHIR R4</h3>
+                        <div class="bg-white p-3 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-10 h-10 md:w-12 md:h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>
+                        <h3 class="font-semibold mt-2 text-sm md:text-base">2. Estándar FHIR R4</h3>
                         <p class="text-xs md:text-sm text-slate-600">Datos limpios y uniformes vía API.</p>
                      </div>
-                     <div class="text-lg md:text-2xl text-slate-300 animated-item" style="--delay: 650ms;">→</div>
+                     <div class="text-xl md:text-2xl text-slate-300 animated-item" style="--delay: 650ms;">→</div>
                      <div class="text-center animated-item" style="--delay: 800ms;">
-                        <div class="bg-white p-2 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-8 h-8 md:w-12 md:h-12 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg></div>
-                        <h3 class="font-semibold mt-2 text-xs sm:text-sm md:text-base">3. Modelos de IA</h3>
+                        <div class="bg-white p-3 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-10 h-10 md:w-12 md:h-12 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg></div>
+                        <h3 class="font-semibold mt-2 text-sm md:text-base">3. Modelos de IA</h3>
                         <p class="text-xs md:text-sm text-slate-600">Entrenamiento y predicción.</p>
                      </div>
-                     <div class="text-lg md:text-2xl text-slate-300 animated-item" style="--delay: 950ms;">→</div>
+                     <div class="text-xl md:text-2xl text-slate-300 animated-item" style="--delay: 950ms;">→</div>
                      <div class="text-center animated-item" style="--delay: 1100ms;">
-                        <div class="bg-white p-2 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-8 h-8 md:w-12 md:h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
-                        <h3 class="font-semibold mt-2 text-xs sm:text-sm md:text-base">4. Decisión Clínica</h3>
+                        <div class="bg-white p-3 md:p-4 rounded-full shadow-lg inline-block"><svg class="w-10 h-10 md:w-12 md:h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                        <h3 class="font-semibold mt-2 text-sm md:text-base">4. Decisión Clínica</h3>
                         <p class="text-xs md:text-sm text-slate-600">Alertas, diagnósticos asistidos.</p>
                      </div>
                  </div>
-                 <p class="mt-6 md:mt-10 text-xs sm:text-sm md:text-lg text-slate-600 animated-item" style="--delay: 1200ms;">FHIR integra <span class="font-semibold">seguridad desde el diseño</span> (autenticación y autorización) para proteger los datos en cada paso.</p>
+                 <p class="mt-8 md:mt-10 text-sm md:text-lg text-slate-600 animated-item" style="--delay: 1200ms;">FHIR integra <span class="font-semibold">seguridad desde el diseño</span> (autenticación y autorización) para proteger los datos en cada paso.</p>
             </div>
         </section>
 
-        <!-- ===== Diapositiva 7: Caso de Éxito ===== -->
+        <!-- Diapositiva 7: Caso de Éxito en Chile -->
         <section class="slide bg-white">
             <div class="slide-content text-center">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-6 animated-item">Caso de Éxito: Receta Electrónica Nacional</h2>
-                <p class="text-sm sm:text-base md:text-xl text-slate-700 mb-6 md:mb-10 animated-item" style="--delay: 200ms;">La implementación con FHIR R4 ha generado un impacto clínico y financiero medible en Chile.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-6 animated-item">Caso de Éxito: Receta Electrónica Nacional</h2>
+                <p class="text-base md:text-xl text-slate-700 mb-8 md:mb-10 animated-item" style="--delay: 200ms;">La implementación con FHIR R4 ha generado un impacto clínico y financiero medible en Chile.</p>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-green-100 p-4 md:p-6 rounded-lg shadow-lg text-center animated-item" style="--delay: 400ms;">
-                        <p class="text-3xl sm:text-5xl md:text-6xl font-bold text-green-700">76%</p>
-                        <p class="text-slate-700 mt-2 font-medium text-sm sm:text-base md:text-lg">Menos errores de medicación</p>
+                    <div class="bg-green-100 p-5 md:p-6 rounded-lg shadow-lg text-center animated-item" style="--delay: 400ms;">
+                        <p class="text-5xl md:text-6xl font-bold text-green-700">76%</p>
+                        <p class="text-slate-700 mt-2 font-medium text-base md:text-lg">Menos errores de medicación</p>
                     </div>
-                    <div class="bg-green-100 p-4 md:p-6 rounded-lg shadow-lg text-center animated-item" style="--delay: 600ms;">
-                        <p class="text-3xl sm:text-5xl md:text-6xl font-bold text-green-700">48%</p>
-                        <p class="text-slate-700 mt-2 font-medium text-sm sm:text-base md:text-lg">Menos reacciones adversas</p>
+                    <div class="bg-green-100 p-5 md:p-6 rounded-lg shadow-lg text-center animated-item" style="--delay: 600ms;">
+                        <p class="text-5xl md:text-6xl font-bold text-green-700">48%</p>
+                        <p class="text-slate-700 mt-2 font-medium text-base md:text-lg">Menos reacciones adversas</p>
                     </div>
-                    <div class="bg-green-100 p-4 md:p-6 rounded-lg shadow-lg text-center animated-item" style="--delay: 800ms;">
-                        <p class="text-2xl sm:text-4xl md:text-5xl font-bold text-green-700">~$200M</p>
-                        <p class="text-slate-700 mt-2 font-medium text-sm sm:text-base md:text-lg">Ahorro potencial anual (USD)</p>
+                    <div class="bg-green-100 p-5 md:p-6 rounded-lg shadow-lg text-center animated-item" style="--delay: 800ms;">
+                        <p class="text-4xl md:text-5xl font-bold text-green-700">~$200M</p>
+                        <p class="text-slate-700 mt-2 font-medium text-base md:text-lg">Ahorro potencial anual (USD)</p>
                     </div>
                 </div>
-                <p class="text-xs md:text-sm text-slate-400 mt-4 md:mt-8 italic animated-item" style="--delay: 1000ms;">Fuente: Datos de resultados del proyecto Sistema Nacional de Receta Electrónica (SNRE), MINSAL.</p>
+                <!-- FUENTE AÑADIDA AQUÍ -->
+                <p class="text-xs md:text-sm text-slate-400 mt-6 md:mt-8 italic animated-item" style="--delay: 1000ms;">Fuente: Datos de resultados del proyecto Sistema Nacional de Receta Electrónica (SNRE), MINSAL.</p>
             </div>
         </section>
 
-        <!-- ===== Diapositiva 8: Próximos Pasos ===== -->
+        <!-- Diapositiva 8: Próximos Pasos -->
         <section class="slide bg-blue-900 text-white">
             <div class="slide-content text-center">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-10 animated-item">Nuestros Próximos Pasos</h2>
-                <div class="text-left max-w-3xl mx-auto text-sm sm:text-base md:text-xl space-y-3 md:space-y-5">
-                    <div class="flex items-start animated-item" style="--delay: 200ms;"><span class="font-bold text-green-400 mr-2 sm:mr-3 md:mr-4 text-xl sm:text-2xl md:text-3xl">1.</span><div><span class="font-semibold">Formación y Capacitación:</span> Entrenar al equipo técnico en el estándar FHIR R4 y la guía Core-CL.</div></div>
-                    <div class="flex items-start animated-item" style="--delay: 400ms;"><span class="font-bold text-green-400 mr-2 sm:mr-3 md:mr-4 text-xl sm:text-2xl md:text-3xl">2.</span><div><span class="font-semibold">Proyecto Piloto:</span> Implementar un servidor FHIR para integrar los datos de un área de bajo riesgo (ej. Admisión).</div></div>
-                    <div class="flex items-start animated-item" style="--delay: 600ms;"><span class="font-bold text-green-400 mr-2 sm:mr-3 md:mr-4 text-xl sm:text-2xl md:text-3xl">3.</span><div><span class="font-semibold">Primer Modelo de IA:</span> Desarrollar un algoritmo predictivo (ej. reingresos) utilizando los datos estandarizados.</div></div>
-                    <div class="flex items-start animated-item" style="--delay: 800ms;"><span class="font-bold text-green-400 mr-2 sm:mr-3 md:mr-4 text-xl sm:text-2xl md:text-3xl">4.</span><div><span class="font-semibold">Medición y Expansión:</span> Evaluar el impacto del piloto y diseñar un plan para extender la arquitectura FHIR al resto del hospital.</div></div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 md:mb-10 animated-item">Nuestros Próximos Pasos</h2>
+                <div class="text-left max-w-3xl mx-auto text-base md:text-xl space-y-4 md:space-y-5">
+                    <div class="flex items-start animated-item" style="--delay: 200ms;"><span class="font-bold text-green-400 mr-3 md:mr-4 text-2xl md:text-3xl">1.</span><div><span class="font-semibold">Formación y Capacitación:</span> Entrenar al equipo técnico en el estándar FHIR R4 y la guía Core-CL.</div></div>
+                    <div class="flex items-start animated-item" style="--delay: 400ms;"><span class="font-bold text-green-400 mr-3 md:mr-4 text-2xl md:text-3xl">2.</span><div><span class="font-semibold">Proyecto Piloto:</span> Implementar un servidor FHIR para integrar los datos de un área de bajo riesgo (ej. Admisión).</div></div>
+                    <div class="flex items-start animated-item" style="--delay: 600ms;"><span class="font-bold text-green-400 mr-3 md:mr-4 text-2xl md:text-3xl">3.</span><div><span class="font-semibold">Primer Modelo de IA:</span> Desarrollar un algoritmo predictivo (ej. reingresos) utilizando los datos estandarizados.</div></div>
+                    <div class="flex items-start animated-item" style="--delay: 800ms;"><span class="font-bold text-green-400 mr-3 md:mr-4 text-2xl md:text-3xl">4.</span><div><span class="font-semibold">Medición y Expansión:</span> Evaluar el impacto del piloto y diseñar un plan para extender la arquitectura FHIR al resto del hospital.</div></div>
                 </div>
-                <div class="mt-8 md:mt-12 animated-item text-xs sm:text-sm md:text-base" style="--delay: 1000ms;">
+                <div class="mt-10 md:mt-12 animated-item text-sm md:text-base" style="--delay: 1000ms;">
                     <a href="https://hl7chile.cl/" target="_blank" class="text-green-300 hover:underline mx-2 md:mx-4">HL7 Chile</a>
                     <a href="https://build.fhir.org/ig/HL7Chile/clcore_ig/" target="_blank" class="text-green-300 hover:underline mx-2 md:mx-4">Guía Core-CL</a>
                     <a href="https://interoperabilidad.minsal.cl/" target="_blank" class="text-green-300 hover:underline mx-2 md:mx-4">MINSAL Interoperabilidad</a>
@@ -264,14 +243,9 @@
 
     </main>
 
-    <!-- Botones navegación -->
-    <div class="fixed bottom-5 right-5 flex space-x-3 z-50 nav-buttons">
-        <button id="prevBtn" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-        </button>
-        <button id="nextBtn" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-        </button>
+    <div class="fixed bottom-5 right-5 flex space-x-3 z-50">
+        <button id="prevBtn" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+        <button id="nextBtn" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
     </div>
 
     <script>
@@ -318,7 +292,7 @@
 
             const copyBtn = document.getElementById('copyBtn');
             const jsonCode = document.getElementById('jsonCode');
-            if (copyBtn && jsonCode) {
+            if (copyBtn && jsonCode) { // Asegúrate de que los elementos existan antes de añadir el listener
                 copyBtn.addEventListener('click', () => {
                     navigator.clipboard.writeText(jsonCode.innerText).then(() => {
                         copyBtn.innerText = 'Copiado!';
