@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HL7 FHIR R4 – Interoperabilidad para la IA en Salud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Agregamos una fuente más profesional y legible */
+        @import url('https://rsms.me/inter/inter.css');
+        html, body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita cualquier barra de scroll */
+            height: 100%;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex; /* Usamos flex para centrar contenido */
+            align-items: center;
+            justify-content: center;
+            
+            /* Control de visibilidad para transiciones */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide-content {
+            max-width: 1100px;
+            width: 100%;
+            padding: 2rem;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- BARRA DE PROGRESO SUPERIOR -->
+    <div id="progressBar" class="fixed top-0 left-0 h-1.5 bg-green-500 z-50 transition-all duration-300"></div>
+
+    <!-- CONTENEDOR DE DIAPOSITIVAS -->
+    <main id="presentation-container">
+
+        <!-- Diapositiva 1: Título -->
+        <section class="slide">
+            <div class="slide-content text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-blue-900 mb-4">HL7 FHIR R4</h1>
+                <p class="text-2xl md:text-3xl text-gray-700">Interoperabilidad para la Inteligencia Artificial en Salud</p>
+                <p class="text-lg text-gray-500 mt-6">Grupo de Innovación - Hospital Puerto Montt</p>
+            </div>
+        </section>
+
+        <!-- Diapositiva 2: ¿Qué es HL7 y FHIR? -->
+        <section class="slide bg-gray-50">
+            <div class="slide-content">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">¿Qué es HL7 y FHIR?</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-lg">
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                        <h3 class="text-2xl font-semibold text-blue-900 mb-3">HL7 (Health Level Seven)</h3>
+                        <p>Es una organización que crea estándares globales para el intercambio de información clínica, permitiendo que diferentes sistemas de salud "hablen" el mismo idioma.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
+                        <h3 class="text-2xl font-semibold text-green-700 mb-3">FHIR® (Fast Healthcare Interoperability Resources)</h3>
+                        <p>Es el estándar más moderno de HL7. Utiliza tecnologías web (APIs RESTful, JSON) para que el intercambio de datos sea rápido, seguro y fácil de implementar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diapositiva 3: ¿Por qué FHIR R4 es Clave? -->
+        <section class="slide bg-white">
+            <div class="slide-content text-center">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8">¿Por qué FHIR R4 es Clave para Nosotros?</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm transform hover:scale-105 transition-transform">
+                        <h3 class="font-semibold text-xl text-blue-900 mb-2">Base para la IA</h3>
+                        <p>Proporciona datos estructurados y de alta calidad, esenciales para entrenar y operar modelos de IA clínica de manera confiable.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm transform hover:scale-105 transition-transform">
+                        <h3 class="font-semibold text-xl text-blue-900 mb-2">Interoperabilidad Real</h3>
+                        <p>Permite conectar nuestros sistemas internos y externos de forma estandarizada, creando un ecosistema de datos unificado.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm transform hover:scale-105 transition-transform">
+                        <h3 class="font-semibold text-xl text-blue-900 mb-2">Seguridad y Cumplimiento</h3>
+                        <p>Incorpora mecanismos robustos de seguridad y auditoría, garantizando la protección de la información sensible del paciente.</p>
+                    </div>
+                </div>
+                <p class="mt-8 text-lg text-gray-600">En Chile, la guía <strong>Core-CL</strong> adapta FHIR R4 a nuestra realidad, asegurando que todos los sistemas cumplan con los mismos requisitos.</p>
+            </div>
+        </section>
+
+        <!-- Diapositiva 4: Recursos Clave (Core-CL) -->
+        <section class="slide bg-gray-50">
+            <div class="slide-content">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">Recursos Clave y Perfiles Core-CL</h2>
+                <p class="text-center text-lg text-gray-600 mb-8">Core-CL define perfiles específicos para los recursos más importantes, asegurando la consistencia a nivel nacional.</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-green-700">Paciente (Patient)</h3><p class="text-gray-600">Datos demográficos.</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-green-700">Observación (Observation)</h3><p class="text-gray-600">Signos vitales, laboratorios.</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-green-700">Encuentro (Encounter)</h3><p class="text-gray-600">Consultas, hospitalizaciones.</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-green-700">Receta (MedicationRequest)</h3><p class="text-gray-600">Prescripciones médicas.</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-green-700">Inmunización (Immunization)</h3><p class="text-gray-600">Registro de vacunas.</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-green-700">Composición (Composition)</h3><p class="text-gray-600">Documentos clínicos.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diapositiva 5: Caso de Éxito en Chile -->
+        <section class="slide bg-white">
+            <div class="slide-content text-center">
+                <h2 class="text-4xl font-bold text-blue-800 mb-6">Caso de Éxito: Sistema Nacional de Receta Electrónica</h2>
+                <p class="text-xl text-gray-700 mb-8">La implementación de la receta electrónica usando FHIR R4 ha generado un impacto medible y positivo en la salud pública de Chile.</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md">
+                        <p class="text-5xl font-bold text-green-600">76%</p>
+                        <p class="text-gray-700 mt-2">Menos errores de medicación en pacientes hospitalizados.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md">
+                        <p class="text-5xl font-bold text-green-600">48%</p>
+                        <p class="text-gray-700 mt-2">Menos reacciones adversas a medicamentos.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md">
+                        <p class="text-4xl font-bold text-green-600">$200M USD</p>
+                        <p class="text-gray-700 mt-2">Ahorro potencial anual estimado.</p>
+                    </div>
+                </div>
+                <p class="text-md text-gray-500 mt-6">Este caso demuestra que FHIR no es solo técnico, es un habilitador de mejoras clínicas y operativas.</p>
+            </div>
+        </section>
+
+        <!-- Diapositiva 6: Desafíos y Oportunidades -->
+        <section class="slide bg-gray-50">
+            <div class="slide-content">
+                <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center">Desafíos y Oportunidades</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-red-600 mb-3">Desafíos a Superar</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li>Gobernanza de datos y coordinación central.</li>
+                            <li>Resistencia al cambio en procesos y roles.</li>
+                            <li>Complejidad al integrar sistemas antiguos (legacy).</li>
+                            <li>Necesidad de capacitación especializada en FHIR.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-green-600 mb-3">Nuestras Oportunidades</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li>Liderar la adopción de estándares en la región.</li>
+                            <li>Desarrollar modelos de IA predictiva para la atención.</li>
+                            <li>Crear una base de datos unificada para investigación.</li>
+                            <li>Mejorar la seguridad y eficiencia del hospital.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diapositiva 7: Próximos Pasos -->
+        <section class="slide bg-blue-900 text-white">
+            <div class="slide-content text-center">
+                <h2 class="text-5xl font-bold mb-8">Próximos Pasos para el Grupo de IA</h2>
+                <div class="text-left mx-auto inline-block text-xl space-y-4">
+                    <p><span class="font-bold text-green-400">1. Formación:</span> Capacitar al equipo técnico en FHIR R4 y la guía Core-CL.</p>
+                    <p><span class="font-bold text-green-400">2. Piloto:</span> Identificar un proyecto de bajo riesgo para integrar un sistema usando un servidor FHIR.</p>
+                    <p><span class="font-bold text-green-400">3. Desarrollo:</span> Construir un primer modelo de IA con los datos estandarizados.</p>
+                    <p><span class="font-bold text-green-400">4. Medición:</span> Evaluar el impacto del piloto y planificar la expansión a otras áreas críticas.</p>
+                </div>
+                <div class="mt-10">
+                    <a href="https://hl7chile.cl/" target="_blank" class="text-green-300 hover:underline mx-4">HL7 Chile</a>
+                    <a href="https://build.fhir.org/ig/HL7Chile/clcore_ig/" target="_blank" class="text-green-300 hover:underline mx-4">Guía Core-CL</a>
+                    <a href="https://interoperabilidad.minsal.cl/" target="_blank" class="text-green-300 hover:underline mx-4">MINSAL Interoperabilidad</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CONTROLES DE NAVEGACIÓN -->
+    <div class="fixed bottom-5 right-5 flex space-x-3 z-50">
+        <button id="prevBtn" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button id="nextBtn" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressBar = document.getElementById('progressBar');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                // Quita la clase 'active' de todas las diapositivas
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Añade la clase 'active' solo a la diapositiva actual
+                slides[index].classList.add('active');
+                
+                // Actualiza el índice global
+                currentSlide = index;
+
+                // Actualiza la UI (barra de progreso y botones)
+                updateUI();
+            }
+
+            function updateUI() {
+                const progress = ((currentSlide + 1) / slides.length) * 100;
+                progressBar.style.width = `${progress}%`;
+
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+
+            function nextSlide() {
+                if (currentSlide < slides.length - 1) {
+                    showSlide(currentSlide + 1);
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    showSlide(currentSlide - 1);
+                }
+            }
+
+            // Event Listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    prevSlide();
+                }
+            });
+
+            // Touch para móviles (swipe)
+            let touchstartX = 0;
+            document.body.addEventListener('touchstart', e => {
+                touchstartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            document.body.addEventListener('touchend', e => {
+                const touchendX = e.changedTouches[0].screenX;
+                if (touchendX < touchstartX - 50) { // Swipe izquierda
+                    nextSlide();
+                } else if (touchendX > touchstartX + 50) { // Swipe derecha
+                    prevSlide();
+                }
+            }, { passive: true });
+
+            // Inicialización al cargar la página
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
