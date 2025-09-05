@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Interactiva: IA Aplicada a la Salud</title>
+    <meta name="description" content="Una experiencia de propuesta interactiva para el curso de formación en Inteligencia Artificial del Servicio de Salud del Reloncaví.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #0f172a; /* slate-900 */
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #38bdf8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; text-fill-color: transparent;
+        }
+
+        /* --- Lienzo para Partículas Interactivas --- */
+        #particles-js {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        /* --- Animaciones y Efectos --- */
+        @keyframes slide-in-fade {
+            from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll {
+            animation: slide-in-fade 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation-play-state: paused;
+        }
+        .animate-on-scroll.is-visible { animation-play-state: running; }
+
+        /* --- Acordeón Interactivo --- */
+        .course-item-content {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .course-item-chevron { transition: transform 0.3s ease; }
+        .course-item.is-open .course-item-chevron { transform: rotate(90deg); }
+
+        /* --- Borde Gradiente --- */
+        .gradient-border-card { position: relative; background-color: white; z-index: 1; }
+        .gradient-border-card::before {
+            content: ""; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(120deg, #4f46e5, #38bdf8, #14b8a6);
+            border-radius: 1.1rem; z-index: -1; transition: opacity 0.3s ease; opacity: 0;
+        }
+        .gradient-border-card:hover::before { opacity: 1; }
+
+        /* --- Formas para Parallax --- */
+        .parallax-shape {
+            position: absolute;
+            z-index: -1;
+            transition: transform 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+    <!-- Lienzo para partículas, siempre en el fondo -->
+    <div id="particles-js"></div>
+
+    <!-- Contenedor principal que se sienta sobre las partículas -->
+    <div class="relative z-10">
+        <!-- ===== HEADER FIJO CON EFECTO GLASSMORPHISM ===== -->
+        <header id="main-header" class="w-full bg-white/80 backdrop-blur-xl z-50 sticky top-0 border-b border-slate-900/10 transition-shadow duration-300">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <h1 class="text-xl font-bold text-slate-900">Propuesta Estratégica</h1>
+                <div class="hidden md:flex items-center space-x-4">
+                     <a href="https://lockedinwork.com" target="_blank" class="text-slate-600 font-semibold px-5 py-2.5 rounded-lg hover:bg-slate-100 hover:text-slate-800 transition-colors">
+                        Saber más en LockedInWork
+                    </a>
+                    <a href="#inversion" class="bg-indigo-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition-colors shadow-sm hover:shadow-lg shadow-indigo-500/20">
+                        Reservar Programa
+                    </a>
+                </div>
+                <a href="#inversion" class="md:hidden bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg">Reservar</a>
+            </div>
+        </header>
+
+        <!-- Formas para el efecto Parallax -->
+        <div class="parallax-shape top-24 -left-24 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl" data-parallax-speed="0.3"></div>
+        <div class="parallax-shape top-1/3 -right-24 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl" data-parallax-speed="0.2"></div>
+
+        <main class="container mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+            <section class="max-w-4xl mx-auto text-center">
+                <p class="font-bold text-indigo-600 uppercase tracking-widest animate-on-scroll">Formación para el Futuro de la Salud</p>
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 mt-4 animate-on-scroll" style="animation-delay: 100ms;">
+                    IA Aplicada a la Salud: <br>
+                    <span class="gradient-text">De los Conceptos a la Acción</span>
+                </h2>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-600 animate-on-scroll" style="animation-delay: 200ms;">
+                    Un programa intensivo de 4 horas diseñado para empoderar al personal del <strong>Servicio de Salud del Reloncaví</strong> con las habilidades y conocimientos para liderar la transformación digital.
+                </p>
+            </section>
+
+            <!-- ===== OBJETIVOS EN CUADRÍCULA ARMÓNICA ===== -->
+            <section id="objetivos" class="max-w-5xl mx-auto mt-24 md:mt-32">
+                <div class="text-center mb-16">
+                     <h3 class="text-3xl md:text-4xl font-bold text-slate-900 animate-on-scroll">Objetivos Generales del Curso</h3>
+                     <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600 animate-on-scroll" style="animation-delay: 100ms;">Al finalizar, su equipo no solo entenderá la IA, podrá aplicarla.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Tarjeta 1 -->
+                    <div class="bg-white/60 backdrop-blur-lg p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-on-scroll">
+                        <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg></div>
+                        <h4 class="text-xl font-bold text-slate-900">Dominar el Vocabulario de la IA</h4>
+                        <p class="text-slate-600 mt-2">Participar con total confianza en discusiones estratégicas sobre tecnología, entendiendo los conceptos clave.</p>
+                    </div>
+                    <!-- Tarjeta 2 -->
+                    <div class="bg-white/60 backdrop-blur-lg p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-on-scroll" style="animation-delay: 100ms;">
+                        <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></div>
+                        <h4 class="text-xl font-bold text-slate-900">Aplicar Prompt Engineering</h4>
+                        <p class="text-slate-600 mt-2">Usar el método C.R.T.F. para transformar ideas en resultados precisos y útiles con IA Generativa.</p>
+                    </div>
+                    <!-- Tarjeta 3 -->
+                     <div class="bg-white/60 backdrop-blur-lg p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-on-scroll" style="animation-delay: 200ms;">
+                         <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></div>
+                        <h4 class="text-xl font-bold text-slate-900">Identificar Oportunidades</h4>
+                        <p class="text-slate-600 mt-2">Detectar procesos y cuellos de botella con alto potencial de optimización usando Design Thinking.</p>
+                    </div>
+                    <!-- Tarjeta 4 -->
+                     <div class="bg-white/60 backdrop-blur-lg p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-on-scroll" style="animation-delay: 300ms;">
+                        <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div>
+                        <h4 class="text-xl font-bold text-slate-900">Evaluar con Marco Ético</h4>
+                        <p class="text-slate-600 mt-2">Implementar soluciones tecnológicas de manera segura, responsable y siempre centrada en el paciente.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== CONTENIDO DETALLADO CON ACORDEÓN INTERACTIVO ===== -->
+            <section id="contenido" class="max-w-3xl mx-auto mt-24 md:mt-32">
+                <div class="text-center mb-16">
+                     <h3 class="text-3xl md:text-4xl font-bold text-slate-900 animate-on-scroll">Hoja de Ruta del Programa</h3>
+                     <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600 animate-on-scroll" style="animation-delay: 100ms;">Un viaje de 4 horas desde los fundamentos hasta la aplicación estratégica.</p>
+                </div>
+                
+                <div id="course-accordion" class="space-y-4 animate-on-scroll" style="animation-delay: 200ms;">
+                    <!-- Clase 1 -->
+                    <div class="course-item bg-white/60 backdrop-blur-lg border border-slate-200 rounded-2xl transition-shadow duration-300 hover:shadow-lg">
+                        <div class="course-item-header flex justify-between items-center p-6 cursor-pointer">
+                            <div class="flex items-center">
+                                 <span class="text-sm font-bold text-indigo-500 mr-4">CLASE 1</span>
+                                 <h4 class="text-lg font-semibold text-slate-900">Fundamentos y Mapeo de Oportunidades</h4>
+                            </div>
+                            <svg class="course-item-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                        <div class="course-item-content">
+                            <div class="px-6 pb-6 pt-2 text-slate-600 border-t border-slate-200">
+                                <p class="mt-4"><strong>Objetivo:</strong> Desmitificar la IA y conectar la tecnología con las necesidades reales de los participantes.</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2">
+                                    <li><strong>Conceptos Clave:</strong> Se define IA, Machine Learning y Deep Learning, y el rol fundamental de los datos.</li>
+                                    <li><strong>Taller Práctico:</strong> Se utiliza Design Thinking para crear un "banco de problemas" a partir de tareas diarias.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- El resto de las clases siguen la misma estructura... -->
+                    <!-- Clase 2 -->
+                    <div class="course-item bg-white/60 backdrop-blur-lg border border-slate-200 rounded-2xl transition-shadow duration-300 hover:shadow-lg">
+                        <div class="course-item-header flex justify-between items-center p-6 cursor-pointer">
+                            <div class="flex items-center">
+                                 <span class="text-sm font-bold text-indigo-500 mr-4">CLASE 2</span>
+                                 <h4 class="text-lg font-semibold text-slate-900">Introducción al Prompt Engineering</h4>
+                            </div>
+                            <svg class="course-item-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                        <div class="course-item-content">
+                             <div class="px-6 pb-6 pt-2 text-slate-600 border-t border-slate-200">
+                                <p class="mt-4"><strong>Objetivo:</strong> Capacitar con una técnica práctica para comunicarse eficazmente con la IA Generativa.</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2">
+                                    <li><strong>Habilidad Clave:</strong> Se enseña el método **C.R.T.F.** (Contexto, Rol, Tarea, Formato) para construir prompts perfectos.</li>
+                                    <li><strong>Taller Práctico:</strong> Se construyen prompts en vivo para resolver problemas del "banco", demostrando el poder del método.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Clase 3 -->
+                    <div class="course-item bg-white/60 backdrop-blur-lg border border-slate-200 rounded-2xl transition-shadow duration-300 hover:shadow-lg">
+                        <div class="course-item-header flex justify-between items-center p-6 cursor-pointer">
+                            <div class="flex items-center">
+                                 <span class="text-sm font-bold text-indigo-500 mr-4">CLASE 3</span>
+                                 <h4 class="text-lg font-semibold text-slate-900">IA como Asistente de Análisis y Documentos</h4>
+                            </div>
+                            <svg class="course-item-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                        <div class="course-item-content">
+                             <div class="px-6 pb-6 pt-2 text-slate-600 border-t border-slate-200">
+                                <p class="mt-4"><strong>Objetivo:</strong> Usar la IA para procesar información y acelerar la creación de documentos estructurados.</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2">
+                                    <li><strong>Análisis de Datos:</strong> Se aprende a "conversar" con datos simples (ej. encuestas) para extraer insights.</li>
+                                    <li><strong>Creación de Documentos:</strong> Taller práctico para generar el 80% del borrador de un manual o protocolo en minutos.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Clase 4 -->
+                    <div class="course-item bg-white/60 backdrop-blur-lg border border-slate-200 rounded-2xl transition-shadow duration-300 hover:shadow-lg">
+                        <div class="course-item-header flex justify-between items-center p-6 cursor-pointer">
+                            <div class="flex items-center">
+                                 <span class="text-sm font-bold text-indigo-500 mr-4">CLASE 4</span>
+                                 <h4 class="text-lg font-semibold text-slate-900">Implementación Segura, Ética y Futuro</h4>
+                            </div>
+                            <svg class="course-item-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                        <div class="course-item-content">
+                             <div class="px-6 pb-6 pt-2 text-slate-600 border-t border-slate-200">
+                                <p class="mt-4"><strong>Objetivo:</strong> Dotar de un marco ético para evaluar la IA, reforzando el rol insustituible del profesional de la salud.</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2">
+                                    <li><strong>Conceptos Éticos:</strong> Se abordan el Sesgo, la Privacidad y el principio clave "Human-in-the-Loop".</li>
+                                    <li><strong>Taller de Riesgo:</strong> Se finaliza con un análisis de impacto y beneficios para una implementación responsable.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== INVERSIÓN ===== -->
+            <section id="inversion" class="max-w-3xl mx-auto mt-24 md:mt-32 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900 animate-on-scroll">Inversión y Próximos Pasos</h3>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600 animate-on-scroll" style="animation-delay: 100ms;">Una inversión clara y directa en el activo más importante: su equipo.</p>
+                
+                <div class="max-w-md mx-auto mt-12 animate-on-scroll" style="animation-delay: 200ms;">
+                    <div class="gradient-border-card p-8 lg:p-10 rounded-2xl text-center">
+                        <h4 class="text-xl font-bold text-slate-900">Valor por Participante</h4>
+                        <p class="mt-2 text-slate-600 text-sm">Acceso completo al programa de 4 horas.</p>
+                        <div class="my-8">
+                            <span class="text-6xl font-extrabold text-slate-900">$45.000</span>
+                            <span class="text-lg text-slate-600">CLP (Valor Final)</span>
+                        </div>
+                        <ul class="text-left space-y-4 text-slate-600">
+                            <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>4 Sesiones en vivo (Online o Presencial)</li>
+                            <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Kit de materiales digitales completos.</li>
+                            <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Constancia de participación.</li>
+                        </ul>
+                        <a href="URL_DE_PAGO_YOINN_AQUI" target="_blank" class="mt-10 block w-full bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-indigo-500/30">
+                            Reservar Cupo Ahora
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-transparent mt-24">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500 border-t border-slate-200">
+            <p>&copy; 2025 LockedInWork. Una propuesta de formación diseñada con 💙</p>
+        </div>
+    </footer>
+
+    <!-- Script para Partículas Interactivas (tsParticles) -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    
+    <!-- SCRIPT PARA INTERACTIVIDAD GENERAL -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Cargar Partículas Interactivas ---
+        tsParticles.load("particles-js", {
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "grab" }, // Modo "grab" para efecto magnético
+                    resize: true,
+                },
+                modes: {
+                    grab: {
+                        distance: 150, // Distancia de atracción
+                        links: {
+                            opacity: 0.5,
+                            color: "#a5b4fc" // Color de las líneas de conexión
+                        }
+                    }
+                },
+            },
+            particles: {
+                color: { value: "#a5b4fc" }, // indigo-200
+                links: { color: "#d1d5db", distance: 150, enable: true, opacity: 0.4, width: 1 },
+                move: {
+                    direction: "none", enable: true, outModes: { default: "bounce" },
+                    random: false, speed: 1, straight: false,
+                },
+                number: { density: { enable: true, area: 800 }, value: 60 },
+                opacity: { value: 0.5 },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 3 } },
+            },
+            detectRetina: true,
+        });
+
+        // --- Animaciones de entrada al hacer scroll ---
+        const scrollObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+
+        // --- Lógica del Acordeón Interactivo ---
+        const accordion = document.getElementById('course-accordion');
+        if (accordion) {
+            const headers = accordion.querySelectorAll('.course-item-header');
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.parentElement;
+                    const content = item.querySelector('.course-item-content');
+                    const wasOpen = item.classList.contains('is-open');
+
+                    accordion.querySelectorAll('.course-item').forEach(i => {
+                        i.classList.remove('is-open');
+                        i.querySelector('.course-item-content').style.maxHeight = null;
+                    });
+                    
+                    if (!wasOpen) {
+                        item.classList.add('is-open');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+        }
+        
+        // --- Sombra dinámica para el header ---
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) { mainHeader.classList.add('shadow-md'); } 
+            else { mainHeader.classList.remove('shadow-md'); }
+        });
+
+        // --- Lógica del Parallax ---
+        const parallaxShapes = document.querySelectorAll('.parallax-shape');
+        window.addEventListener('scroll', () => {
+            let scrollPosition = window.scrollY;
+            parallaxShapes.forEach(shape => {
+                const speed = parseFloat(shape.dataset.parallaxSpeed) || 0.5;
+                shape.style.transform = `translateY(${scrollPosition * speed}px)`;
+            });
+        });
+    });
+    </script>
+</body>
+</html>
